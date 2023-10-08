@@ -33,8 +33,7 @@ import java.util.Scanner;
 public class Principal {
     public static void main(String[] args) throws ParseException, ClassNotFoundException {
         Alquiler alquiler[] = new Alquiler[10];
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
-        Date firstDate, secondDate;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         String nombre, matricula, cedula;
         int opcion, posicionAmarre, tipoBarco, eslora, anioFabricacion, i = 0;
         Scanner sc = new Scanner(System.in);
@@ -54,7 +53,8 @@ public class Principal {
 
             switch (opcion) {
                 case 1:
-                    boolean salir = true;
+                    Date firstDate = null, secondDate = null;
+                    boolean salir = true, flagdate = true;
 
                     // PEDIR INFORMACION PARA EL ALQUILER
 
@@ -64,13 +64,27 @@ public class Principal {
                     sc.nextLine();
                     cedula = sc.next();
 
-                    System.out.println(
-                            "Ingrese la fecha de inicio del alquiler (formato mm/dd/aaaa), de seguido y con las barras incluidas: ");
+                    while (flagdate) {
 
-                    firstDate = sdf.parse(System.console().readLine());
-                    System.out.println(
-                            "Ingrese la fecha de finalizacion del alquiler (formato mm/dd/aaaa), de seguido y con las barras incluidas: ");
-                    secondDate = sdf.parse(System.console().readLine());
+                        try {
+                            sdf.setLenient(false);
+                            System.out.println("Ingrese la fecha de inicio del alquiler (dd/mm/yyyy): ");
+                            firstDate = sdf.parse(sc.next());
+                            System.out.println("Ingrese la fecha de fin del alquiler (dd/mm/yyyy): ");
+                            secondDate = sdf.parse(sc.next());
+
+                            if (firstDate.compareTo(secondDate) > 0) {
+                                System.out.println("La fecha de inicio no puede ser mayor a la fecha de fin");
+                                continue;
+                            } else {
+                                flagdate = false;
+                            }
+                        } catch (ParseException e) {
+                            System.out.println("Fecha invalida");
+                            continue;
+                        }
+
+                    }
 
                     System.out.println("Ingrese la posicion del amarre: ");
                     posicionAmarre = sc.nextInt();
