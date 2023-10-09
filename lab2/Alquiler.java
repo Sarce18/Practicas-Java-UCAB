@@ -84,28 +84,8 @@ public class Alquiler {
     public void imprimirDatos() throws ClassNotFoundException {
 
         cliente.imprimirDatos();
-
-        // DETERMINANDO EL TIPO DE BARCO PARA IMPRIMIR LOS DATOS
-
-        switch (barco.getClass().getSimpleName()) {
-            case "Velero":
-                System.out.println("Tipo de barco: Velero");
-                ((Velero) barco).imprimirDatos();
-                break;
-            case "Deportivo":
-                System.out.println("Tipo de barco: Deportivo");
-                ((Deportivo) barco).imprimirDatos();
-                break;
-            case "Yate":
-                System.out.println("Tipo de barco: Yate");
-                ((Yate) barco).imprimirDatos();
-                break;
-            default:
-                System.out.println("Tipo de barco: Otro");
-                barco.imprimirDatos();
-                break;
-        }
-
+        System.out.println("Tipo de barco: " + barco.getClass().getSimpleName());
+        barco.imprimirDatos();
         System.out.println("Posicion de amarre: " + posicionAmarre);
         System.out.println("Fecha de alquiler: " + firstDate);
         System.out.println("Fecha de devolucion: " + secondDate);
@@ -143,6 +123,7 @@ public class Alquiler {
         } else {
             return calcularDiasOcupacion() * barco.calcularModFuncion();
         }
+
     }
 
 }
