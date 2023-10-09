@@ -112,21 +112,7 @@ public class Alquiler {
 
     public int calcularAlquiler() {
 
-        // DETERMINANDO EL TIPO DE BARCO PARA CALCULAR EL ALQUILER
-
         return calcularDiasOcupacion() * barco.calcularModFuncion();
-
-        /*
-         * if (barco instanceof Velero) {
-         * return calcularDiasOcupacion() * ((Velero) barco).modFuncion();
-         * } else if (barco instanceof Deportivo) {
-         * return calcularDiasOcupacion() * ((Deportivo) barco).modFuncion();
-         * } else if (barco instanceof Yate) {
-         * return calcularDiasOcupacion() * ((Yate) barco).modFuncion();
-         * } else {
-         * return calcularDiasOcupacion() * barco.calcularModFuncion();
-         * }
-         */
 
     }
 
