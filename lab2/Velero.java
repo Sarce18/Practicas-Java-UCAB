@@ -42,7 +42,7 @@ public class Velero extends Barco {
         System.out.println("Numero de mastiles: " + numeroMastiles);
     }
 
-    public int modFuncion() {
+    public int calcularModFuncion() {
         return super.calcularModFuncion() + numeroMastiles;
     }
 

@@ -41,7 +41,7 @@ public class Deportivo extends Barco {
         System.out.println("Potencia en CV: " + potenciaCV);
     }
 
-    public int modFuncion() {
+    public int calcularModFuncion() {
         return super.calcularModFuncion() + potenciaCV;
 
     }

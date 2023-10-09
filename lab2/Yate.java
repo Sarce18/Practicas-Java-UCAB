@@ -42,9 +42,9 @@ public class Yate extends Deportivo {
         System.out.println("Numero de camarotes: " + numeroCamarotes);
     }
 
-    public int modFuncion() {
+    public int calcularModFuncion() {
 
-        return super.modFuncion() + numeroCamarotes;
+        return super.calcularModFuncion() + numeroCamarotes;
     }
 
 }
